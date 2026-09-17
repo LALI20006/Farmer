@@ -1,12 +1,5 @@
 # 🌱 AgroConnect — Direct Farm-to-Table Agricultural Marketplace
 
-> **AgroConnect** is a modern, high-performance agricultural marketplace platform engineered to bridge the gap between regional agricultural producers and urban consumers across India. By eliminating multi-tier intermediaries, AgroConnect delivers 100% farm traceability, transparent pricing, and fair value compensation directly to verified farmers.
-
-- 🌐 **Live Application**: [https://agroconnect-marketplace.surge.sh](https://agroconnect-marketplace.surge.sh)
-
-
----
-
 ## 🌟 Executive Overview
 
 **AgroConnect** is a modern, high-performance agricultural marketplace ecosystem engineered to eradicate multi-tier middleman exploitation in the agricultural supply chain. By directly connecting verified regional farmers with household buyers and bulk purchasers across India, AgroConnect provides:
