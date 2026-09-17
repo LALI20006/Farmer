@@ -52,12 +52,14 @@ export const FarmerDashboard = () => {
   const [prodImage, setProdImage] = useState('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80');
   const [imagePreview, setImagePreview] = useState('https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80');
 
-  const myFarmId = user?.farmId || 'farmer-1';
-  const myProducts = products.filter(p => p.farmId === myFarmId);
+  const myFarmId = user?.farmId || user?.id || '';
+  const myProducts = myFarmId ? products.filter(p => p.farmId === myFarmId) : [];
 
-  const totalSalesAmount = orders.reduce((acc, o) => acc + o.total, 0);
-  const pendingOrders = orders.filter(o => o.statusText !== 'Delivered');
-  const completedOrders = orders.filter(o => o.statusText === 'Delivered');
+  // Strictly isolate orders and telemetry to this farmer's products
+  const farmerOrders = orders.filter(o => o.items?.some(item => (myFarmId && item.farmId === myFarmId) || (!item.farmId && item.farmerName === user?.name)));
+  const totalSalesAmount = farmerOrders.reduce((acc, o) => acc + o.total, 0);
+  const pendingOrders = farmerOrders.filter(o => o.statusText !== 'Delivered');
+  const completedOrders = farmerOrders.filter(o => o.statusText === 'Delivered');
 
   const handlePublishProduct = (e) => {
     e.preventDefault();

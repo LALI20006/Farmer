@@ -447,6 +447,9 @@ export const AppProvider = ({ children }) => {
       discount: orderData.discount,
       total: orderData.total,
       paymentMethod: orderData.paymentMethod,
+      customerId: user?.id || null,
+      customerEmail: user?.email || orderData.shippingAddress?.email || '',
+      customerName: user?.name || orderData.shippingAddress?.name || 'Customer',
       shippingAddress: orderData.shippingAddress,
       trackingHistory
     };
@@ -668,8 +671,23 @@ export const AppProvider = ({ children }) => {
       await AgroDatabase.terminateSession(activeSessionId);
     }
     setUser(null);
-    localStorage.removeItem('agro_active_session_id');
-    localStorage.removeItem('agro_current_user');
+    setCart([]);
+    setWishlist([]);
+    setNotifications([]);
+    setMessages([]);
+    try {
+      localStorage.removeItem('agro_active_session_id');
+      localStorage.removeItem('agro_current_user');
+      localStorage.removeItem('agro_active_cart');
+      localStorage.removeItem('agro_active_wishlist');
+      localStorage.removeItem('agro_notifications');
+      localStorage.removeItem('agro_messages');
+      localStorage.removeItem('agro_remembered_identifier');
+      localStorage.removeItem('agro_remembered_password');
+      localStorage.removeItem('agro_remember_me');
+    } catch (e) {
+      // ignore
+    }
     setCurrentView('signin');
     addToast("Signed Out", "You have been logged out. Please sign in to continue.", "info");
   };

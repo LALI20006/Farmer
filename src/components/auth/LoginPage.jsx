@@ -1,39 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext';
 import { Sprout, ArrowRight, AlertCircle } from 'lucide-react';
 
 export const LoginPage = () => {
   const { setCurrentView, loginWithCredentials, addToast } = useApp();
 
-  const [rememberMe, setRememberMe] = useState(() => {
-    try {
-      return localStorage.getItem('agro_remember_me') === 'true';
-    } catch (e) {
-      return false;
-    }
-  });
+  // Always initialize inputs clean and empty to protect user privacy
+  const [rememberMe, setRememberMe] = useState(false);
+  const [identifier, setIdentifier] = useState('');
+  const [password, setPassword] = useState('');
 
-  const [identifier, setIdentifier] = useState(() => {
+  // Proactively clear any legacy cached credentials from localStorage to ensure complete privacy
+  useEffect(() => {
     try {
-      if (localStorage.getItem('agro_remember_me') === 'true') {
-        return localStorage.getItem('agro_remembered_identifier') || '';
-      }
-      return '';
+      localStorage.removeItem('agro_remembered_identifier');
+      localStorage.removeItem('agro_remembered_password');
+      localStorage.removeItem('agro_remember_me');
     } catch (e) {
-      return '';
+      // ignore
     }
-  });
-
-  const [password, setPassword] = useState(() => {
-    try {
-      if (localStorage.getItem('agro_remember_me') === 'true') {
-        return localStorage.getItem('agro_remembered_password') || '';
-      }
-      return '';
-    } catch (e) {
-      return '';
-    }
-  });
+  }, []);
 
   const [errorMessage, setErrorMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -49,21 +35,6 @@ export const LoginPage = () => {
       setErrorMessage("Please enter your registered email or mobile number and password.");
       addToast("Missing Fields", "Please enter your registered email or mobile number and password.", "error");
       return;
-    }
-
-    // Persist remember me preferences
-    try {
-      if (rememberMe) {
-        localStorage.setItem('agro_remember_me', 'true');
-        localStorage.setItem('agro_remembered_identifier', cleanIdentifier);
-        localStorage.setItem('agro_remembered_password', cleanPassword);
-      } else {
-        localStorage.removeItem('agro_remember_me');
-        localStorage.removeItem('agro_remembered_identifier');
-        localStorage.removeItem('agro_remembered_password');
-      }
-    } catch (err) {
-      // ignore
     }
 
     setIsSubmitting(true);
@@ -98,8 +69,8 @@ export const LoginPage = () => {
           </p>
         </div>
 
-        {/* Login Form */}
-        <form onSubmit={handleCustomLogin} className="p-6 sm:p-8 space-y-5 text-xs text-left">
+        {/* Login Form with autocomplete disabled for privacy */}
+        <form onSubmit={handleCustomLogin} autoComplete="off" className="p-6 sm:p-8 space-y-5 text-xs text-left">
           
           {/* Inline Error Banner */}
           {errorMessage && (
@@ -117,6 +88,8 @@ export const LoginPage = () => {
             <input
               type="text"
               required
+              autoComplete="off"
+              name="user_identifier"
               placeholder="Enter your registered email or mobile"
               value={identifier}
               onChange={(e) => {
@@ -144,6 +117,8 @@ export const LoginPage = () => {
             <input
               type="password"
               required
+              autoComplete="new-password"
+              name="user_secret"
               placeholder="Enter your password"
               value={password}
               onChange={(e) => {
@@ -154,33 +129,17 @@ export const LoginPage = () => {
             />
           </div>
 
-          {/* Remember Me Checkbox */}
+          {/* Keep session active checkbox */}
           <div className="flex items-center gap-2 pt-0.5">
             <input
               type="checkbox"
               id="rememberMe"
               checked={rememberMe}
-              onChange={(e) => {
-                const checked = e.target.checked;
-                setRememberMe(checked);
-                try {
-                  if (checked) {
-                    localStorage.setItem('agro_remember_me', 'true');
-                    if (identifier.trim()) localStorage.setItem('agro_remembered_identifier', identifier.trim());
-                    if (password) localStorage.setItem('agro_remembered_password', password);
-                  } else {
-                    localStorage.removeItem('agro_remember_me');
-                    localStorage.removeItem('agro_remembered_identifier');
-                    localStorage.removeItem('agro_remembered_password');
-                  }
-                } catch (err) {
-                  // ignore
-                }
-              }}
+              onChange={(e) => setRememberMe(e.target.checked)}
               className="w-4 h-4 text-emerald-700 rounded border-stone-300 focus:ring-emerald-600 cursor-pointer accent-[#064e3b]"
             />
             <label htmlFor="rememberMe" className="text-xs font-semibold text-stone-600 cursor-pointer select-none">
-              Remember me on this device
+              Keep me signed in on this device
             </label>
           </div>
 

@@ -32,8 +32,8 @@ export const CustomerDashboard = () => {
 
   const [activeTab, setActiveTab] = useState('orders'); // 'orders', 'wishlist', 'addresses', 'profile'
 
-  // Filter user's specific orders
-  const userOrders = orders.filter(o => !o.customerId || o.customerId === user?.id || o.shippingAddress?.name === user?.name);
+  // Strictly isolate orders to the currently signed-in user
+  const userOrders = orders.filter(o => user?.id && (o.customerId === user.id || (user?.email && o.customerEmail?.toLowerCase() === user.email.toLowerCase())));
   const wishlistedProducts = products.filter(p => wishlist.includes(p.id));
   const recommendedProducts = products.filter(p => p.isFeatured).slice(0, 4);
 
