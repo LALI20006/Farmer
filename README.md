@@ -1,30 +1,7 @@
-<div align="center">
+# 🌱 AgroConnect — Direct Farm-to-Table Agricultural Marketplace
 
-  <img src="public/agroconnect-banner.svg" alt="AgroConnect Hero Banner" width="100%" />
+> **AgroConnect** is a modern, high-performance agricultural marketplace platform engineered to bridge the gap between regional agricultural producers and urban consumers across India. By eliminating multi-tier intermediaries, AgroConnect delivers 100% farm traceability, transparent pricing, and fair value compensation directly to verified farmers.
 
-  <br />
-
-  <p align="center">
-    <a href="https://agroconnect-marketplace.surge.sh"><img src="https://img.shields.io/badge/Live_Marketplace-Surge.sh-059669?style=for-the-badge&logo=surge&logoColor=white" alt="Live Demo" /></a>
-    <a href="https://share.streamlit.io/deploy?repository=LALI20006/Farmer&branch=master&mainModule=streamlit_app.py"><img src="https://img.shields.io/badge/Deploy_to-Streamlit_Cloud-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit Cloud" /></a>
-    <a href="https://github.com/LALI20006/Farmer"><img src="https://img.shields.io/badge/GitHub_Repo-LALI20006%2FFarmer-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API"><img src="https://img.shields.io/badge/Security-WebCrypto_SHA--256-10B981?style=for-the-badge&logo=security&logoColor=white" alt="Security" /></a>
-  </p>
-
-  <p align="center">
-    <strong>Direct Farm-to-Table Agricultural Marketplace & Traceability Platform</strong><br />
-    <em>Bridging Regional Indian Farmers Directly with Consumers • Zero Middlemen • 100% Farm Traceability • Fair Value Payouts</em>
-  </p>
-
-  <p align="center">
-    <a href="https://agroconnect-marketplace.surge.sh"><b>🚀 Launch Live App</b></a> •
-    <a href="https://share.streamlit.io/deploy?repository=LALI20006/Farmer&branch=master&mainModule=streamlit_app.py"><b>⚡ 1-Click Streamlit Deploy</b></a> •
-    <a href="#-demo-credentials"><b>🔑 Demo Credentials</b></a> •
-    <a href="#-architecture--data-pipeline"><b>🏛️ Architecture</b></a> •
-    <a href="#-local-development"><b>💻 Quickstart</b></a>
-  </p>
-
-</div>
 
 ---
 
