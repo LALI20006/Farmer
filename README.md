@@ -16,28 +16,6 @@
 
 ---
 
-## 🧭 Live Deployments
-
-| Channel | Platform | Access Link | Status |
-| :--- | :--- | :--- | :--- |
-| **Primary Production SPA** | **Surge.sh (Global Edge CDN)** | [https://agroconnect-marketplace.surge.sh](https://agroconnect-marketplace.surge.sh) | `🟢 Operational` |
-| **Streamlit Cloud Hub** | **Streamlit Community Cloud** | [1-Click Streamlit Deployment](https://share.streamlit.io/deploy?repository=LALI20006/Farmer&branch=master&mainModule=streamlit_app.py) | `🚀 Ready to Deploy` |
-| **Source Code Repository** | **GitHub** | [github.com/LALI20006/Farmer](https://github.com/LALI20006/Farmer) | `📦 Public` |
-
----
-
-## 🔑 Demo Credentials
-
-Test the platform instantly across all user roles or create new accounts on the registration page:
-
-| Portal Role | Demo Login Identifier | Password | Access Rights & Privileges |
-| :--- | :--- | :--- | :--- |
-| **🛡️ System Administrator** | `admin@agroconnect.in` | `admin123` | Full governance: User Directory, Account Activation/Banning, Live Login Audit Trail |
-| **🚜 Verified Producer (Farmer)** | *Create in Register Page* | *Your Password* | Producer Hub: Add Harvests, Update Inventory Pricing, Order Fulfillment Pipeline |
-| **🛒 Consumer (Buyer)** | *Create in Register Page* | *Your Password* | Buyer Hub: 100+ Crops, Side-Drawer Cart, Instant UPI/COD Checkout, Order Tracking |
-
----
-
 ## 🎯 Role Portals & Core Capabilities
 
 ### 1. 🛒 Consumer & Buyer Experience
